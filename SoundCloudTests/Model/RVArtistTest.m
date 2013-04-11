@@ -28,6 +28,8 @@
     [super tearDown];
 }
 
+/**************************************************************************************************/
+#pragma mark - test
 
 - (void)testArtistWithJSONDictWithNil_returnNil
 {

@@ -28,6 +28,7 @@
 		AD5BDF3017171CAE0029D969 /* NSDictionary+SKParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */; };
 		AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF3317171DCD0029D969 /* RVViewController.m */; };
 		AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5BDF3517171DDF0029D969 /* RVViewController.xib */; };
+		AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF38171720340029D969 /* RVTrackTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		AD5BDF3217171DCD0029D969 /* RVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVViewController.h; sourceTree = "<group>"; };
 		AD5BDF3317171DCD0029D969 /* RVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVViewController.m; sourceTree = "<group>"; };
 		AD5BDF3517171DDF0029D969 /* RVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVViewController.xib; sourceTree = "<group>"; };
+		AD5BDF37171720340029D969 /* RVTrackTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackTests.h; sourceTree = "<group>"; };
+		AD5BDF38171720340029D969 /* RVTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrackTests.m; sourceTree = "<group>"; };
 		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -193,6 +196,8 @@
 		AD5BDF29171716CB0029D969 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD5BDF37171720340029D969 /* RVTrackTests.h */,
+				AD5BDF38171720340029D969 /* RVTrackTests.m */,
 				AD5BDF2A171716E10029D969 /* RVArtistTest.h */,
 				AD5BDF2B171716E10029D969 /* RVArtistTest.m */,
 			);
@@ -359,6 +364,7 @@
 			files = (
 				AD47682E171704960023C293 /* SoundCloudTests.m in Sources */,
 				AD5BDF2C171716E10029D969 /* RVArtistTest.m in Sources */,
+				AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

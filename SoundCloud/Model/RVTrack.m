@@ -8,6 +8,26 @@
 
 #import "RVTrack.h"
 
+#import "NSDictionary+SKParsing.h"
+
 @implementation RVTrack
+
+/**************************************************************************************************/
+#pragma mark - Birth & Death
+
++(RVTrack *)trackWithJSONDict:(NSDictionary *)dict
+{
+    RVTrack *result = nil;
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        result = [[RVTrack alloc] init];
+        
+        result.title = [dict getStringValue:TITLE_KEY];
+        result.waveFormURL = [dict getStringValue:WAVEFORM_URL_KEY];
+        result.pictureURL = [dict getStringValue:PICTURE_URL_KEY];
+    }
+    return result;
+}
+
 
 @end
