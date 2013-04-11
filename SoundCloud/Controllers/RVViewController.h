@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RVViewController : UIViewController
+- (IBAction)login:(id)sender;
+
 
 @end

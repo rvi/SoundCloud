@@ -12,3 +12,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#ifdef DEBUG
+    #define DLog(...) NSLog(__VA_ARGS__)
+    #define DTrace() NSLog(@"%s", __PRETTY_FUNCTION__)
+#else
+    #define DLog(...) /* */
+    #define DTrace() /* */
+#endif

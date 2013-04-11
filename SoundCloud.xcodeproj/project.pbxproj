@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85822053567C46699BEDEA95 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB776377C5344822A9EC0C01 /* libPods.a */; };
 		AD4767FD171704960023C293 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4767FC171704960023C293 /* UIKit.framework */; };
 		AD4767FF171704960023C293 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4767FE171704960023C293 /* Foundation.framework */; };
 		AD476801171704960023C293 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD476800171704960023C293 /* CoreGraphics.framework */; };
@@ -16,13 +17,17 @@
 		AD47680F171704960023C293 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AD47680E171704960023C293 /* Default.png */; };
 		AD476811171704960023C293 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD476810171704960023C293 /* Default@2x.png */; };
 		AD476813171704960023C293 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD476812171704960023C293 /* Default-568h@2x.png */; };
-		AD476816171704960023C293 /* RVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD476815171704960023C293 /* RVViewController.m */; };
-		AD476819171704960023C293 /* RVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD476817171704960023C293 /* RVViewController.xib */; };
 		AD476821171704960023C293 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD476820171704960023C293 /* SenTestingKit.framework */; };
 		AD476822171704960023C293 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4767FC171704960023C293 /* UIKit.framework */; };
 		AD476823171704960023C293 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4767FE171704960023C293 /* Foundation.framework */; };
 		AD47682B171704960023C293 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD476829171704960023C293 /* InfoPlist.strings */; };
 		AD47682E171704960023C293 /* SoundCloudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD47682D171704960023C293 /* SoundCloudTests.m */; };
+		AD5BDF241717128F0029D969 /* RVTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF231717128F0029D969 /* RVTrack.m */; };
+		AD5BDF281717136A0029D969 /* RVArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF271717136A0029D969 /* RVArtist.m */; };
+		AD5BDF2C171716E10029D969 /* RVArtistTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF2B171716E10029D969 /* RVArtistTest.m */; };
+		AD5BDF3017171CAE0029D969 /* NSDictionary+SKParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */; };
+		AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF3317171DCD0029D969 /* RVViewController.m */; };
+		AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5BDF3517171DDF0029D969 /* RVViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BB90202BD364EFCAC5183C7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		AD4767F9171704960023C293 /* SoundCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4767FC171704960023C293 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD4767FE171704960023C293 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,15 +55,24 @@
 		AD47680E171704960023C293 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AD476810171704960023C293 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AD476812171704960023C293 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AD476814171704960023C293 /* RVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVViewController.h; sourceTree = "<group>"; };
-		AD476815171704960023C293 /* RVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVViewController.m; sourceTree = "<group>"; };
-		AD476818171704960023C293 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RVViewController.xib; sourceTree = "<group>"; };
 		AD47681F171704960023C293 /* SoundCloudTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundCloudTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD476820171704960023C293 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		AD476828171704960023C293 /* SoundCloudTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundCloudTests-Info.plist"; sourceTree = "<group>"; };
 		AD47682A171704960023C293 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD47682C171704960023C293 /* SoundCloudTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundCloudTests.h; sourceTree = "<group>"; };
 		AD47682D171704960023C293 /* SoundCloudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundCloudTests.m; sourceTree = "<group>"; };
+		AD5BDF221717128F0029D969 /* RVTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrack.h; sourceTree = "<group>"; };
+		AD5BDF231717128F0029D969 /* RVTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrack.m; sourceTree = "<group>"; };
+		AD5BDF261717136A0029D969 /* RVArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVArtist.h; sourceTree = "<group>"; };
+		AD5BDF271717136A0029D969 /* RVArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVArtist.m; sourceTree = "<group>"; };
+		AD5BDF2A171716E10029D969 /* RVArtistTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVArtistTest.h; sourceTree = "<group>"; };
+		AD5BDF2B171716E10029D969 /* RVArtistTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVArtistTest.m; sourceTree = "<group>"; };
+		AD5BDF2E17171CAE0029D969 /* NSDictionary+SKParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SKParsing.h"; sourceTree = "<group>"; };
+		AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SKParsing.m"; sourceTree = "<group>"; };
+		AD5BDF3217171DCD0029D969 /* RVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVViewController.h; sourceTree = "<group>"; };
+		AD5BDF3317171DCD0029D969 /* RVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVViewController.m; sourceTree = "<group>"; };
+		AD5BDF3517171DDF0029D969 /* RVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVViewController.xib; sourceTree = "<group>"; };
+		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +83,7 @@
 				AD4767FD171704960023C293 /* UIKit.framework in Frameworks */,
 				AD4767FF171704960023C293 /* Foundation.framework in Frameworks */,
 				AD476801171704960023C293 /* CoreGraphics.framework in Frameworks */,
+				85822053567C46699BEDEA95 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +107,7 @@
 				AD476826171704960023C293 /* SoundCloudTests */,
 				AD4767FB171704960023C293 /* Frameworks */,
 				AD4767FA171704960023C293 /* Products */,
+				7BB90202BD364EFCAC5183C7 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +127,7 @@
 				AD4767FE171704960023C293 /* Foundation.framework */,
 				AD476800171704960023C293 /* CoreGraphics.framework */,
 				AD476820171704960023C293 /* SenTestingKit.framework */,
+				DB776377C5344822A9EC0C01 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,9 +137,9 @@
 			children = (
 				AD47680B171704960023C293 /* RVAppDelegate.h */,
 				AD47680C171704960023C293 /* RVAppDelegate.m */,
-				AD476814171704960023C293 /* RVViewController.h */,
-				AD476815171704960023C293 /* RVViewController.m */,
-				AD476817171704960023C293 /* RVViewController.xib */,
+				AD5BDF3117171D7B0029D969 /* Controllers */,
+				AD5BDF21171712720029D969 /* Model */,
+				AD5BDF2D17171C880029D969 /* Utils */,
 				AD476803171704960023C293 /* Supporting Files */,
 			);
 			path = SoundCloud;
@@ -144,6 +162,7 @@
 		AD476826171704960023C293 /* SoundCloudTests */ = {
 			isa = PBXGroup;
 			children = (
+				AD5BDF29171716CB0029D969 /* Model */,
 				AD47682C171704960023C293 /* SoundCloudTests.h */,
 				AD47682D171704960023C293 /* SoundCloudTests.m */,
 				AD476827171704960023C293 /* Supporting Files */,
@@ -160,6 +179,45 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AD5BDF21171712720029D969 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD5BDF221717128F0029D969 /* RVTrack.h */,
+				AD5BDF231717128F0029D969 /* RVTrack.m */,
+				AD5BDF261717136A0029D969 /* RVArtist.h */,
+				AD5BDF271717136A0029D969 /* RVArtist.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD5BDF29171716CB0029D969 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD5BDF2A171716E10029D969 /* RVArtistTest.h */,
+				AD5BDF2B171716E10029D969 /* RVArtistTest.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD5BDF2D17171C880029D969 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AD5BDF2E17171CAE0029D969 /* NSDictionary+SKParsing.h */,
+				AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AD5BDF3117171D7B0029D969 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD5BDF3217171DCD0029D969 /* RVViewController.h */,
+				AD5BDF3317171DCD0029D969 /* RVViewController.m */,
+				AD5BDF3517171DDF0029D969 /* RVViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,6 +228,7 @@
 				AD4767F5171704960023C293 /* Sources */,
 				AD4767F6171704960023C293 /* Frameworks */,
 				AD4767F7171704960023C293 /* Resources */,
+				B14E31917C2841D298C6C9EF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +266,7 @@
 			attributes = {
 				CLASSPREFIX = RV;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Rémy Virin";
+				ORGANIZATIONNAME = "R√©my Virin";
 			};
 			buildConfigurationList = AD4767F4171704960023C293 /* Build configuration list for PBXProject "SoundCloud" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -236,7 +295,7 @@
 				AD47680F171704960023C293 /* Default.png in Resources */,
 				AD476811171704960023C293 /* Default@2x.png in Resources */,
 				AD476813171704960023C293 /* Default-568h@2x.png in Resources */,
-				AD476819171704960023C293 /* RVViewController.xib in Resources */,
+				AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +323,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		B14E31917C2841D298C6C9EF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -273,7 +346,10 @@
 			files = (
 				AD476809171704960023C293 /* main.m in Sources */,
 				AD47680D171704960023C293 /* RVAppDelegate.m in Sources */,
-				AD476816171704960023C293 /* RVViewController.m in Sources */,
+				AD5BDF241717128F0029D969 /* RVTrack.m in Sources */,
+				AD5BDF281717136A0029D969 /* RVArtist.m in Sources */,
+				AD5BDF3017171CAE0029D969 /* NSDictionary+SKParsing.m in Sources */,
+				AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD47682E171704960023C293 /* SoundCloudTests.m in Sources */,
+				AD5BDF2C171716E10029D969 /* RVArtistTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,14 +379,6 @@
 				AD476806171704960023C293 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AD476817171704960023C293 /* RVViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AD476818171704960023C293 /* en */,
-			);
-			name = RVViewController.xib;
 			sourceTree = "<group>";
 		};
 		AD476829171704960023C293 /* InfoPlist.strings */ = {
@@ -381,6 +450,7 @@
 		};
 		AD476832171704960023C293 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BB90202BD364EFCAC5183C7 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SoundCloud/SoundCloud-Prefix.pch";
@@ -392,6 +462,7 @@
 		};
 		AD476833171704960023C293 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BB90202BD364EFCAC5183C7 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SoundCloud/SoundCloud-Prefix.pch";
@@ -454,6 +525,7 @@
 				AD476833171704960023C293 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD476834171704960023C293 /* Build configuration list for PBXNativeTarget "SoundCloudTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +534,7 @@
 				AD476836171704960023C293 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

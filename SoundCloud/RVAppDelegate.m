@@ -10,12 +10,20 @@
 
 #import "RVViewController.h"
 
+#import "SCAPI.h"
+
 @implementation RVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    [SCSoundCloud setClientID:@"75ddaecc882a56de5b48e7dece1b92b3"
+                       secret:@"5eabce3e5a68fd7459db2c7671164972"
+                  redirectURL:[NSURL URLWithString:@"sampleproject://oauth"]];
+
+    
     self.viewController = [[RVViewController alloc] initWithNibName:@"RVViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
