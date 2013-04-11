@@ -10,7 +10,11 @@
 
 #import "SCUI.h"
 
+#import "RVTrack.h"
+
 @interface RVViewController ()
+
+@property (nonatomic, strong) NSMutableArray *tracks;
 
 @end
 
@@ -21,6 +25,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    self.tracks = [NSMutableArray array];
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
@@ -37,6 +42,16 @@
             if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
 
                 DLog(@"response : %@",jsonResponse);
+                for (NSDictionary *dict in jsonResponse)
+                {
+                    if ([dict isKindOfClass:[NSDictionary class]])
+                    {
+                        RVTrack *track = [RVTrack trackWithJSONDict:dict];
+                        [self.tracks addObject:track];
+                    }
+                }
+                
+                DLog(@" tracks count : %d",[self.tracks count]);
             }            
         };
      
