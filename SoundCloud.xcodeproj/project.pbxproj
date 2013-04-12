@@ -29,6 +29,9 @@
 		AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF3317171DCD0029D969 /* RVViewController.m */; };
 		AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5BDF3517171DDF0029D969 /* RVViewController.xib */; };
 		AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF38171720340029D969 /* RVTrackTests.m */; };
+		ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */; };
+		ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E10171842340007BE84 /* RVTrackCell.m */; };
+		ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD26E121718424F0007BE84 /* RVTrackCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,11 @@
 		AD5BDF3517171DDF0029D969 /* RVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVViewController.xib; sourceTree = "<group>"; };
 		AD5BDF37171720340029D969 /* RVTrackTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackTests.h; sourceTree = "<group>"; };
 		AD5BDF38171720340029D969 /* RVTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrackTests.m; sourceTree = "<group>"; };
+		ADD26E0B1718303A0007BE84 /* RVTracksAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTracksAPI.h; sourceTree = "<group>"; };
+		ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTracksAPI.m; sourceTree = "<group>"; };
+		ADD26E0F171842340007BE84 /* RVTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackCell.h; sourceTree = "<group>"; };
+		ADD26E10171842340007BE84 /* RVTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrackCell.m; sourceTree = "<group>"; };
+		ADD26E121718424F0007BE84 /* RVTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVTrackCell.xib; sourceTree = "<group>"; };
 		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,7 +149,9 @@
 				AD47680B171704960023C293 /* RVAppDelegate.h */,
 				AD47680C171704960023C293 /* RVAppDelegate.m */,
 				AD5BDF3117171D7B0029D969 /* Controllers */,
+				ADD26E0E171841DD0007BE84 /* Views */,
 				AD5BDF21171712720029D969 /* Model */,
+				ADD26E0A1718300F0007BE84 /* API */,
 				AD5BDF2D17171C880029D969 /* Utils */,
 				AD476803171704960023C293 /* Supporting Files */,
 			);
@@ -223,6 +233,25 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		ADD26E0A1718300F0007BE84 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ADD26E0B1718303A0007BE84 /* RVTracksAPI.h */,
+				ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ADD26E0E171841DD0007BE84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ADD26E0F171842340007BE84 /* RVTrackCell.h */,
+				ADD26E10171842340007BE84 /* RVTrackCell.m */,
+				ADD26E121718424F0007BE84 /* RVTrackCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +330,7 @@
 				AD476811171704960023C293 /* Default@2x.png in Resources */,
 				AD476813171704960023C293 /* Default-568h@2x.png in Resources */,
 				AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */,
+				ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +385,8 @@
 				AD5BDF281717136A0029D969 /* RVArtist.m in Sources */,
 				AD5BDF3017171CAE0029D969 /* NSDictionary+SKParsing.m in Sources */,
 				AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */,
+				ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */,
+				ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

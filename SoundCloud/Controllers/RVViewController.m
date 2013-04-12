@@ -10,66 +10,50 @@
 
 #import "SCUI.h"
 
+// Model
 #import "RVTrack.h"
+
+// API
+#import "RVTracksAPI.h"
+
+// View
+#import "RVTrackCell.h"
 
 @interface RVViewController ()
 
-@property (nonatomic, strong) NSMutableArray *tracks;
+@property (nonatomic, strong) NSArray *tracks;
 
 @end
 
 @implementation RVViewController
 
+/**************************************************************************************************/
+#pragma mark - View management
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    self.tracks = [NSMutableArray array];
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
     
     if (account)
     {
-        SCRequestResponseHandler handler;
-        handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
-            NSError *jsonError = nil;
-            NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                                 JSONObjectWithData:data
-                                                 options:0
-                                                 error:&jsonError];
-            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-
-                DLog(@"response : %@",jsonResponse);
-                for (NSDictionary *dict in jsonResponse)
-                {
-                    if ([dict isKindOfClass:[NSDictionary class]])
-                    {
-                        RVTrack *track = [RVTrack trackWithJSONDict:dict];
-                        [self.tracks addObject:track];
-                    }
-                }
-                
-                DLog(@" tracks count : %d",[self.tracks count]);
-            }            
-        };
-     
-        NSString *resourceURL = @"https://api.soundcloud.com/tracks.json";
-        [SCRequest performMethod:SCRequestMethodGET
-                      onResource:[NSURL URLWithString:resourceURL]
-                 usingParameters:nil
-                     withAccount:account
-          sendingProgressHandler:nil
-                 responseHandler:handler];
+        [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
+            DLog(@"success: %@",inTracks);
+            self.tracks = inTracks;
+            
+            
+        } Failed:^(NSError *error) {
+            DLog(@"fail to get tracks : %@",error);
+        }];
+        
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+/**************************************************************************************************/
+#pragma mark - Actions
 
 - (IBAction) login:(id) sender
 {
@@ -93,6 +77,25 @@
         [self presentViewController:loginViewController animated:YES completion:NULL];
     }];
 }
+/**************************************************************************************************/
+#pragma mark - UITableViewDatasource
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.tracks.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reusableID = [RVTrackCell reusableIdentifier];
+    RVTrackCell *cell = (RVTrackCell *)[tableView dequeueReusableCellWithIdentifier:reusableID];
+    
+    if (!cell)
+    {
+        cell = [RVTrackCell cell];
+    }
+
+    return cell;
+}
 
 @end

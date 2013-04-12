@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RVViewController : UIViewController
-- (IBAction)login:(id)sender;
+@interface RVViewController : UIViewController<UITableViewDataSource, UITabBarDelegate>
 
+/**************************************************************************************************/
+#pragma mark - Getters & Setters
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+/**************************************************************************************************/
+#pragma mark - Actions
+
+- (IBAction)login:(id)sender;
 
 @end

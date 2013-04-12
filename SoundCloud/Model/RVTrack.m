@@ -25,9 +25,21 @@
         result.title = [dict getStringValue:TITLE_KEY];
         result.waveFormURL = [dict getStringValue:WAVEFORM_URL_KEY];
         result.pictureURL = [dict getStringValue:PICTURE_URL_KEY];
+        
+        NSDictionary *artistDict = [dict objectForKey:ARTIST_KEY];
+        result.artist = [RVArtist artistWithJSONDict:artistDict];
     }
     return result;
 }
 
+/**************************************************************************************************/
+#pragma mark - Description
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"Track [\r\
+            title : %@\r\
+            artist : %@]", self.title, self.artist.userName];
+}
 
 @end
