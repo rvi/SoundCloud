@@ -35,6 +35,7 @@
 		ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E1517185E340007BE84 /* RVImageAPI.m */; };
 		ADDC1DC3171862AF00A4AFEC /* NSDate+SoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */; };
 		ADDC1DC71718630800A4AFEC /* RVNSDateAdditionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC1DC61718630800A4AFEC /* RVNSDateAdditionTests.m */; };
+		ADDC1DCA1718705F00A4AFEC /* UIImage+SoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC1DC91718705F00A4AFEC /* UIImage+SoundCloud.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SoundCloud.m"; sourceTree = "<group>"; };
 		ADDC1DC51718630800A4AFEC /* RVNSDateAdditionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVNSDateAdditionTests.h; sourceTree = "<group>"; };
 		ADDC1DC61718630800A4AFEC /* RVNSDateAdditionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVNSDateAdditionTests.m; sourceTree = "<group>"; };
+		ADDC1DC81718705F00A4AFEC /* UIImage+SoundCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SoundCloud.h"; sourceTree = "<group>"; };
+		ADDC1DC91718705F00A4AFEC /* UIImage+SoundCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SoundCloud.m"; sourceTree = "<group>"; };
 		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,6 +234,8 @@
 				AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */,
 				ADDC1DC1171862AF00A4AFEC /* NSDate+SoundCloud.h */,
 				ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */,
+				ADDC1DC81718705F00A4AFEC /* UIImage+SoundCloud.h */,
+				ADDC1DC91718705F00A4AFEC /* UIImage+SoundCloud.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */,
 				ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */,
 				ADDC1DC3171862AF00A4AFEC /* NSDate+SoundCloud.m in Sources */,
+				ADDC1DCA1718705F00A4AFEC /* UIImage+SoundCloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

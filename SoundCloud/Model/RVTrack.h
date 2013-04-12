@@ -18,6 +18,9 @@
 #define ARTIST_KEY @"user"
 #define DATE_KEY @"created_at"
 
+//KVO
+#define WAVEFORM_KVO @"waveform"
+
 @interface RVTrack : NSObject
 
 /**************************************************************************************************/

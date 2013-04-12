@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RVViewController : UIViewController<UITableViewDataSource, UITabBarDelegate>
+@interface RVViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 /**************************************************************************************************/
 #pragma mark - Getters & Setters
