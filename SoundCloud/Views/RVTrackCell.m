@@ -41,5 +41,12 @@
     return cell;
 }
 
+/**************************************************************************************************/
+#pragma mark - update UI
+
+- (void)updateUIWithTrack:(RVTrack *)track
+{
+    
+}
 
 @end

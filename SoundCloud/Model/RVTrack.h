@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *waveFormURL;
 @property (nonatomic, strong) NSString *pictureURL;
+@property (nonatomic, strong) UIImage *waveform;
 @property (nonatomic, strong) RVArtist *artist;
 
 /**************************************************************************************************/

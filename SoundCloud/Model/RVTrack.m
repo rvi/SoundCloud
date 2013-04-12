@@ -22,6 +22,7 @@
     {
         result = [[RVTrack alloc] init];
         
+        result.waveform = nil;
         result.title = [dict getStringValue:TITLE_KEY];
         result.waveFormURL = [dict getStringValue:WAVEFORM_URL_KEY];
         result.pictureURL = [dict getStringValue:PICTURE_URL_KEY];

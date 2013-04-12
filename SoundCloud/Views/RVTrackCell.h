@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+// Model
+#import "RVTrack.h"
+
 @interface RVTrackCell : UITableViewCell
 
 /**************************************************************************************************/
@@ -20,5 +23,11 @@
 #pragma mark - Birth & Death
 
 + (RVTrackCell *)cell;
+
+
+/**************************************************************************************************/
+#pragma mark - update UI
+
+- (void)updateUIWithTrack:(RVTrack *)track;
 
 @end

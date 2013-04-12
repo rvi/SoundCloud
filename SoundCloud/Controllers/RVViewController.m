@@ -15,6 +15,7 @@
 
 // API
 #import "RVTracksAPI.h"
+#import "RVImageAPI.h"
 
 // View
 #import "RVTrackCell.h"
@@ -22,6 +23,9 @@
 @interface RVViewController ()
 
 @property (nonatomic, strong) NSArray *tracks;
+
+// API
+-(void)retrieveWaveforms;
 
 @end
 
@@ -43,7 +47,8 @@
         [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
             DLog(@"success: %@",inTracks);
             self.tracks = inTracks;
-            
+            [self retrieveWaveforms];
+            [self.tableView reloadData];
             
         } Failed:^(NSError *error) {
             DLog(@"fail to get tracks : %@",error);
@@ -53,9 +58,26 @@
 }
 
 /**************************************************************************************************/
+#pragma mark - API
+
+-(void)retrieveWaveforms
+{
+    for (RVTrack *track in self.tracks)
+    {
+        [RVImageAPI getImageAtURL:track.waveFormURL
+                        succeeded:^(UIImage *image) {
+                            track.waveform = image;
+
+                        } failed:^(NSError *error) {
+                            DLog(@"fail to get waveform image : %@",error);
+                        }];
+    }
+}
+
+/**************************************************************************************************/
 #pragma mark - Actions
 
-- (IBAction) login:(id) sender
+- (IBAction)login:(id)sender
 {
     SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
         if (SC_CANCELED(error)) {

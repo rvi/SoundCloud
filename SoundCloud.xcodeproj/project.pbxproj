@@ -32,6 +32,7 @@
 		ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */; };
 		ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E10171842340007BE84 /* RVTrackCell.m */; };
 		ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD26E121718424F0007BE84 /* RVTrackCell.xib */; };
+		ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E1517185E340007BE84 /* RVImageAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		ADD26E0F171842340007BE84 /* RVTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackCell.h; sourceTree = "<group>"; };
 		ADD26E10171842340007BE84 /* RVTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrackCell.m; sourceTree = "<group>"; };
 		ADD26E121718424F0007BE84 /* RVTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVTrackCell.xib; sourceTree = "<group>"; };
+		ADD26E1417185E340007BE84 /* RVImageAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVImageAPI.h; sourceTree = "<group>"; };
+		ADD26E1517185E340007BE84 /* RVImageAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVImageAPI.m; sourceTree = "<group>"; };
 		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,6 +241,8 @@
 			children = (
 				ADD26E0B1718303A0007BE84 /* RVTracksAPI.h */,
 				ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */,
+				ADD26E1417185E340007BE84 /* RVImageAPI.h */,
+				ADD26E1517185E340007BE84 /* RVImageAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */,
 				ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */,
 				ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */,
+				ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
