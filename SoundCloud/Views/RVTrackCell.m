@@ -46,7 +46,8 @@
 
 - (void)updateUIWithTrack:(RVTrack *)track
 {
-    
+    self.titleLabel.text = track.title;
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",track.date];
 }
 
 @end

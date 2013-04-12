@@ -45,7 +45,7 @@
     if (account)
     {
         [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
-            DLog(@"success: %@",inTracks);
+            
             self.tracks = inTracks;
             [self retrieveWaveforms];
             [self.tableView reloadData];
@@ -66,8 +66,9 @@
     {
         [RVImageAPI getImageAtURL:track.waveFormURL
                         succeeded:^(UIImage *image) {
-                            track.waveform = image;
 
+                            track.waveform = image;
+                            
                         } failed:^(NSError *error) {
                             DLog(@"fail to get waveform image : %@",error);
                         }];
@@ -117,6 +118,12 @@
         cell = [RVTrackCell cell];
     }
 
+    if (indexPath.row < [self.tracks count])
+    {
+        RVTrack *track = [self.tracks objectAtIndex:indexPath.row];
+        [cell updateUIWithTrack:track];
+    }
+    
     return cell;
 }
 

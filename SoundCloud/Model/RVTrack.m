@@ -8,7 +8,9 @@
 
 #import "RVTrack.h"
 
+// Parsing
 #import "NSDictionary+SKParsing.h"
+#import "NSDate+SoundCloud.h"
 
 @implementation RVTrack
 
@@ -26,6 +28,9 @@
         result.title = [dict getStringValue:TITLE_KEY];
         result.waveFormURL = [dict getStringValue:WAVEFORM_URL_KEY];
         result.pictureURL = [dict getStringValue:PICTURE_URL_KEY];
+
+        NSString *dateString = [dict getStringValue:DATE_KEY];
+        result.date = [NSDate dateFromString:dateString];
         
         NSDictionary *artistDict = [dict objectForKey:ARTIST_KEY];
         result.artist = [RVArtist artistWithJSONDict:artistDict];

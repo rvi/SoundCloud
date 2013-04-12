@@ -33,6 +33,8 @@
 		ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E10171842340007BE84 /* RVTrackCell.m */; };
 		ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD26E121718424F0007BE84 /* RVTrackCell.xib */; };
 		ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E1517185E340007BE84 /* RVImageAPI.m */; };
+		ADDC1DC3171862AF00A4AFEC /* NSDate+SoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */; };
+		ADDC1DC71718630800A4AFEC /* RVNSDateAdditionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC1DC61718630800A4AFEC /* RVNSDateAdditionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,10 @@
 		ADD26E121718424F0007BE84 /* RVTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVTrackCell.xib; sourceTree = "<group>"; };
 		ADD26E1417185E340007BE84 /* RVImageAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVImageAPI.h; sourceTree = "<group>"; };
 		ADD26E1517185E340007BE84 /* RVImageAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVImageAPI.m; sourceTree = "<group>"; };
+		ADDC1DC1171862AF00A4AFEC /* NSDate+SoundCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SoundCloud.h"; sourceTree = "<group>"; };
+		ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SoundCloud.m"; sourceTree = "<group>"; };
+		ADDC1DC51718630800A4AFEC /* RVNSDateAdditionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVNSDateAdditionTests.h; sourceTree = "<group>"; };
+		ADDC1DC61718630800A4AFEC /* RVNSDateAdditionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVNSDateAdditionTests.m; sourceTree = "<group>"; };
 		DB776377C5344822A9EC0C01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,6 +184,7 @@
 		AD476826171704960023C293 /* SoundCloudTests */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC1DC4171862E200A4AFEC /* Utils */,
 				AD5BDF29171716CB0029D969 /* Model */,
 				AD47682C171704960023C293 /* SoundCloudTests.h */,
 				AD47682D171704960023C293 /* SoundCloudTests.m */,
@@ -222,6 +229,8 @@
 			children = (
 				AD5BDF2E17171CAE0029D969 /* NSDictionary+SKParsing.h */,
 				AD5BDF2F17171CAE0029D969 /* NSDictionary+SKParsing.m */,
+				ADDC1DC1171862AF00A4AFEC /* NSDate+SoundCloud.h */,
+				ADDC1DC2171862AF00A4AFEC /* NSDate+SoundCloud.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -255,6 +264,15 @@
 				ADD26E121718424F0007BE84 /* RVTrackCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ADDC1DC4171862E200A4AFEC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC1DC51718630800A4AFEC /* RVNSDateAdditionTests.h */,
+				ADDC1DC61718630800A4AFEC /* RVNSDateAdditionTests.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +411,7 @@
 				ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */,
 				ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */,
 				ADD26E1617185E340007BE84 /* RVImageAPI.m in Sources */,
+				ADDC1DC3171862AF00A4AFEC /* NSDate+SoundCloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +422,7 @@
 				AD47682E171704960023C293 /* SoundCloudTests.m in Sources */,
 				AD5BDF2C171716E10029D969 /* RVArtistTest.m in Sources */,
 				AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */,
+				ADDC1DC71718630800A4AFEC /* RVNSDateAdditionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

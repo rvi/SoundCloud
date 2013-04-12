@@ -18,6 +18,8 @@
 
 +(NSString *)reusableIdentifier;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 /**************************************************************************************************/
 #pragma mark - Birth & Death
