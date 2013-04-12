@@ -8,6 +8,9 @@
 
 #import "RVTrackCell.h"
 
+// Utils
+#import "NSDate+SoundCloud.h"
+
 #define REUSABLE_IDENTIFIER @"trackCell"
 
 @implementation RVTrackCell
@@ -47,7 +50,7 @@
 - (void)updateUIWithTrack:(RVTrack *)track
 {
     self.titleLabel.text = track.title;
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",track.date];
+    self.dateLabel.text = [track.date stringForDisplay];
 }
 
 @end

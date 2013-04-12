@@ -12,4 +12,6 @@
 
 + (NSDate *)dateFromString:(NSString *)string;
 
+- (NSString *)stringForDisplay;
+
 @end

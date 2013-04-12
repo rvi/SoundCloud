@@ -12,7 +12,8 @@
 
 @implementation RVNSDateAdditionTests
 
-
+/**************************************************************************************************/
+#pragma mark - date from string
 
 - (void)testDateFromStringWithNil_returnNil
 {
@@ -60,6 +61,23 @@
     
     // THEN
     STAssertNotNil(result, nil);
+}
+
+/**************************************************************************************************/
+#pragma mark - String for display
+
+- (void)testStringForDisplay
+{
+    // GIVEN
+    NSString *dateString = @"2013/04/12 15:37:38 +0000";
+    NSDate *date = [NSDate dateFromString:dateString];
+    
+    // WHEN
+    NSString *result = [date stringForDisplay];
+    
+    // THEN
+    STAssertEqualObjects(result, @"12/04/2013", nil);
+    
 }
 
 @end

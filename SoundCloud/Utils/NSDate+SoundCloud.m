@@ -28,4 +28,17 @@
 
 }
 
+- (NSString *)stringForDisplay
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
+                                               fromDate:self];
+    NSInteger year = [components year];
+    NSInteger month = [components month];
+    NSInteger day = [components day];
+    
+    return [NSString stringWithFormat:@"%.2d/%.2d/%d",day, month, year];
+}
+
 @end
