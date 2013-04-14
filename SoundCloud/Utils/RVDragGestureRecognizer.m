@@ -24,6 +24,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+        DLog(@"began");
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.view];
     
@@ -39,9 +40,10 @@
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+        DLog(@"moved");
     if (self.state != UIGestureRecognizerStateFailed)
     {
-        self.state = UIGestureRecognizerStateRecognized;
+        self.state = UIGestureRecognizerStatePossible;
         
         UITouch *touch = [touches anyObject];
         CGPoint point = [touch locationInView:self.view.superview];
@@ -62,13 +64,13 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    DLog(@"ended");
     [self.dragDelegate dragEndedGoingTop:self.isGoingToTop];
     
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+        DLog(@"cancelled");
 }
 
 @end
