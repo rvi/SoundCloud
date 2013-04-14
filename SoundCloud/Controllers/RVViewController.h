@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RVViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+// Gestures
+#import "RVDragGestureRecognizer.h"
+
+@interface RVViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, DragGestureDelegate>
 
 /**************************************************************************************************/
 #pragma mark - Getters & Setters
 
+@property (strong, nonatomic) IBOutlet UIView *tracksView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 /**************************************************************************************************/

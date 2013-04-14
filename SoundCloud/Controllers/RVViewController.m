@@ -38,6 +38,10 @@
 {
     [super viewDidLoad];
     
+    RVDragGestureRecognizer *dragGesture = [[RVDragGestureRecognizer alloc] init];
+    dragGesture.dragDelegate = self;
+    [self.tracksView addGestureRecognizer:dragGesture];
+    
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
@@ -45,7 +49,15 @@
     if (account)
     {
         [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
+
+            // TODO: remove all 44 
+            CGFloat yTracksView = self.view.frame.size.height - 44;
+            [self.tracksView setFrame:CGRectMake(0,
+                                                 yTracksView,
+                                                 CGRectGetWidth(self.tracksView.frame),
+                                                 CGRectGetHeight(self.tracksView.frame))];
             
+            [self.view addSubview:self.tracksView];
             self.tracks = inTracks;
             [self retrieveWaveforms];
             [self.tableView reloadData];
@@ -55,6 +67,38 @@
         }];
         
     }
+}
+
+
+
+/**************************************************************************************************/
+#pragma mark - Drag gesture delegate
+
+
+- (void)moveTo:(UITouch *)touch
+{
+    CGPoint point = [touch locationInView:self.view];
+    
+    //DLog(@"touch : %@",[NSValue valueWithCGPoint:point]);
+    
+    point.y = point.y < 0 ? 0 : point.y;
+    
+    if (point.y < CGRectGetHeight(self.view.frame) - 44)
+    {
+        CGRect trackViewFrame = self.tracksView.frame;
+        trackViewFrame.origin.y = point.y;
+        self.tracksView.frame = trackViewFrame;
+    }
+}
+
+- (void)dragEndedGoingTop:(BOOL)isGoingTop
+{
+    CGFloat lastPosition = isGoingTop ? 0 : CGRectGetHeight(self.view.frame) - 44;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect trackViewFrame = self.tracksView.frame;
+        trackViewFrame.origin.y = lastPosition;
+        self.tracksView.frame = trackViewFrame;
+    }];
 }
 
 /**************************************************************************************************/
