@@ -12,10 +12,12 @@
 
 // Model
 #import "RVTrack.h"
+#import "RVUser.h"
 
 // API
 #import "RVTracksAPI.h"
 #import "RVImageAPI.h"
+#import "RVUserAPI.h"
 
 // View
 #import "RVTrackCell.h"
@@ -23,9 +25,15 @@
 @interface RVViewController ()
 
 @property (nonatomic, strong) NSArray *tracks;
+@property (nonatomic, strong) RVUser *user;
+
+
+-(void)refreshUI;
 
 // API
--(void)retrieveWaveforms;
+- (void)retrieveWaveforms;
+- (void)retrieveTracks;
+- (void)retrieveInfosForUser;
 
 @end
 
@@ -45,31 +53,47 @@
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
-    
+
     if (account)
     {
-        [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
-
-            // TODO: remove all 44 
-            CGFloat yTracksView = self.view.frame.size.height - 44;
-            [self.tracksView setFrame:CGRectMake(0,
-                                                 yTracksView,
-                                                 CGRectGetWidth(self.tracksView.frame),
-                                                 CGRectGetHeight(self.tracksView.frame))];
-            
-            [self.view addSubview:self.tracksView];
-            self.tracks = inTracks;
-            [self retrieveWaveforms];
-            [self.tableView reloadData];
-            
-        } Failed:^(NSError *error) {
-            DLog(@"fail to get tracks : %@",error);
-        }];
+        [self retrieveTracks];
+        [self retrieveInfosForUser];
         
     }
 }
 
-
+-(void)refreshUI
+{
+    SCAccount *account = [SCSoundCloud account];
+    NSString *title = account == nil ? @"LOGIN" : @"LOGOUT";
+    [self.loginButton setTitle:title forState:UIControlStateNormal];
+    
+    NSString *welcomeTitle = self.user.username != nil ? [self.user.username uppercaseString] : @"";
+    self.welcomeLabel.text = welcomeTitle;
+    
+    UIImageView *userPicture = [[UIImageView alloc] initWithFrame:self.userPictureImageView.frame];
+    [userPicture setContentMode:UIViewContentModeScaleAspectFit];
+   
+    if (self.user.picture)
+    {
+        userPicture.image = self.user.picture;
+    }
+    else
+    {
+        userPicture.image = [UIImage imageNamed:@"SoundCloud_logo (1).png"];
+    }
+    
+    
+    
+    [UIView transitionFromView:self.userPictureImageView
+                        toView:userPicture
+                      duration:0.3
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    completion:^(BOOL finished) {
+                        self.userPictureImageView = userPicture;
+                    }];
+    
+}
 
 /**************************************************************************************************/
 #pragma mark - Drag gesture delegate
@@ -78,9 +102,7 @@
 - (void)moveTo:(UITouch *)touch
 {
     CGPoint point = [touch locationInView:self.view];
-    
-    //DLog(@"touch : %@",[NSValue valueWithCGPoint:point]);
-    
+        
     point.y = point.y < 0 ? 0 : point.y;
     
     if (point.y < CGRectGetHeight(self.view.frame) - 44)
@@ -118,19 +140,64 @@
                         }];
     }
 }
+- (void)retrieveTracks
+{
+    [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
+        
+        // TODO: remove all 44
+        CGFloat yTracksView = self.view.frame.size.height - 44;
+        [self.tracksView setFrame:CGRectMake(0,
+                                             yTracksView,
+                                             CGRectGetWidth(self.tracksView.frame),
+                                             CGRectGetHeight(self.tracksView.frame))];
+        
+        [self.view addSubview:self.tracksView];
+        self.tracks = inTracks;
+        [self retrieveWaveforms];
+        [self.tableView reloadData];
+        
+    } Failed:^(NSError *error) {
+        DLog(@"fail to get tracks : %@",error);
+    }];
+}
 
-/**************************************************************************************************/
-#pragma mark - Actions
+- (void)retrieveInfosForUser
+{
+    [RVUserAPI getInfoForUserSucceeded:^(RVUser *inUser) {
+        
+        self.user = inUser;
+        [self getPictureForLoggedUser];
+    } failed:^(NSError *error) {
+        DLog(@"fail to retrieve user : %@", error);
+    }];
+}
 
-- (IBAction)login:(id)sender
+- (void)getPictureForLoggedUser
+{
+    [RVImageAPI getImageAtURL:self.user.pictureURL
+                    succeeded:^(UIImage *image) {
+                        
+                        self.user.picture = image;
+                        [self refreshUI];
+                        
+                    } failed:^(NSError *error) {
+                        DLog(@"fail to get waveform image : %@",error);
+                    }];
+}
+
+- (void)login
 {
     SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
+        
         if (SC_CANCELED(error)) {
+            [self refreshUI];
             NSLog(@"Canceled!");
         } else if (error) {
+            [self refreshUI];
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
-            NSLog(@"Done!");
+            NSLog(@"Login Done!");
+            [self retrieveInfosForUser];
         }
     };
     
@@ -140,9 +207,26 @@
         loginViewController = [SCLoginViewController
                                loginViewControllerWithPreparedURL:preparedURL
                                completionHandler:handler];
-
+        
         [self presentViewController:loginViewController animated:YES completion:NULL];
     }];
+}
+
+/**************************************************************************************************/
+#pragma mark - Actions
+
+- (IBAction)login:(id)sender
+{
+    if ([SCSoundCloud account])
+    {
+        [SCSoundCloud removeAccess];
+        self.user = nil;
+        [self refreshUI];
+    }
+    else
+    {
+        [self login];
+    }
 }
 /**************************************************************************************************/
 #pragma mark - UITableViewDatasource

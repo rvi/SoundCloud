@@ -29,6 +29,10 @@
 		AD5BDF3417171DCD0029D969 /* RVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF3317171DCD0029D969 /* RVViewController.m */; };
 		AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5BDF3517171DDF0029D969 /* RVViewController.xib */; };
 		AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5BDF38171720340029D969 /* RVTrackTests.m */; };
+		AD76B739171B4F8800CC0BA3 /* RVUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD76B738171B4F8800CC0BA3 /* RVUserAPI.m */; };
+		AD76B73C171B4FD000CC0BA3 /* RVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AD76B73B171B4FD000CC0BA3 /* RVUser.m */; };
+		AD76B73F171B540B00CC0BA3 /* RVUserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AD76B73E171B540B00CC0BA3 /* RVUserTest.m */; };
+		AD76B745171C37B200CC0BA3 /* SoundCloud_logo (1).png in Resources */ = {isa = PBXBuildFile; fileRef = AD76B744171C37B200CC0BA3 /* SoundCloud_logo (1).png */; };
 		ADD26E0D1718303A0007BE84 /* RVTracksAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */; };
 		ADD26E11171842340007BE84 /* RVTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD26E10171842340007BE84 /* RVTrackCell.m */; };
 		ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD26E121718424F0007BE84 /* RVTrackCell.xib */; };
@@ -83,6 +87,13 @@
 		AD5BDF3517171DDF0029D969 /* RVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RVViewController.xib; sourceTree = "<group>"; };
 		AD5BDF37171720340029D969 /* RVTrackTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackTests.h; sourceTree = "<group>"; };
 		AD5BDF38171720340029D969 /* RVTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTrackTests.m; sourceTree = "<group>"; };
+		AD76B737171B4F8800CC0BA3 /* RVUserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVUserAPI.h; sourceTree = "<group>"; };
+		AD76B738171B4F8800CC0BA3 /* RVUserAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVUserAPI.m; sourceTree = "<group>"; };
+		AD76B73A171B4FD000CC0BA3 /* RVUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVUser.h; sourceTree = "<group>"; };
+		AD76B73B171B4FD000CC0BA3 /* RVUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVUser.m; sourceTree = "<group>"; };
+		AD76B73D171B540B00CC0BA3 /* RVUserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVUserTest.h; sourceTree = "<group>"; };
+		AD76B73E171B540B00CC0BA3 /* RVUserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVUserTest.m; sourceTree = "<group>"; };
+		AD76B744171C37B200CC0BA3 /* SoundCloud_logo (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SoundCloud_logo (1).png"; sourceTree = "<group>"; };
 		ADD26E0B1718303A0007BE84 /* RVTracksAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTracksAPI.h; sourceTree = "<group>"; };
 		ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVTracksAPI.m; sourceTree = "<group>"; };
 		ADD26E0F171842340007BE84 /* RVTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVTrackCell.h; sourceTree = "<group>"; };
@@ -176,6 +187,7 @@
 		AD476803171704960023C293 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD76B744171C37B200CC0BA3 /* SoundCloud_logo (1).png */,
 				AD476804171704960023C293 /* SoundCloud-Info.plist */,
 				AD476805171704960023C293 /* InfoPlist.strings */,
 				AD476808171704960023C293 /* main.m */,
@@ -215,6 +227,8 @@
 				AD5BDF231717128F0029D969 /* RVTrack.m */,
 				AD5BDF261717136A0029D969 /* RVArtist.h */,
 				AD5BDF271717136A0029D969 /* RVArtist.m */,
+				AD76B73A171B4FD000CC0BA3 /* RVUser.h */,
+				AD76B73B171B4FD000CC0BA3 /* RVUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +240,8 @@
 				AD5BDF38171720340029D969 /* RVTrackTests.m */,
 				AD5BDF2A171716E10029D969 /* RVArtistTest.h */,
 				AD5BDF2B171716E10029D969 /* RVArtistTest.m */,
+				AD76B73D171B540B00CC0BA3 /* RVUserTest.h */,
+				AD76B73E171B540B00CC0BA3 /* RVUserTest.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +278,8 @@
 				ADD26E0C1718303A0007BE84 /* RVTracksAPI.m */,
 				ADD26E1417185E340007BE84 /* RVImageAPI.h */,
 				ADD26E1517185E340007BE84 /* RVImageAPI.m */,
+				AD76B737171B4F8800CC0BA3 /* RVUserAPI.h */,
+				AD76B738171B4F8800CC0BA3 /* RVUserAPI.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -365,6 +383,7 @@
 				AD476813171704960023C293 /* Default-568h@2x.png in Resources */,
 				AD5BDF3617171DDF0029D969 /* RVViewController.xib in Resources */,
 				ADD26E131718424F0007BE84 /* RVTrackCell.xib in Resources */,
+				AD76B745171C37B200CC0BA3 /* SoundCloud_logo (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +457,8 @@
 				ADDC1DC3171862AF00A4AFEC /* NSDate+SoundCloud.m in Sources */,
 				ADDC1DCA1718705F00A4AFEC /* UIImage+SoundCloud.m in Sources */,
 				ADDC1DCD171A185700A4AFEC /* RVDragGestureRecognizer.m in Sources */,
+				AD76B739171B4F8800CC0BA3 /* RVUserAPI.m in Sources */,
+				AD76B73C171B4FD000CC0BA3 /* RVUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +470,7 @@
 				AD5BDF2C171716E10029D969 /* RVArtistTest.m in Sources */,
 				AD5BDF39171720340029D969 /* RVTrackTests.m in Sources */,
 				ADDC1DC71718630800A4AFEC /* RVNSDateAdditionTests.m in Sources */,
+				AD76B73F171B540B00CC0BA3 /* RVUserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

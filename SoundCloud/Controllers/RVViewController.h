@@ -18,6 +18,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *tracksView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIImageView *userPictureImageView;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 
 /**************************************************************************************************/
 #pragma mark - Actions
