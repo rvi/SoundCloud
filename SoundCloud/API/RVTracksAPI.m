@@ -14,10 +14,9 @@
 // Model
 #import "RVTrack.h"
 
-#define TRACKS_URL @"https://api.soundcloud.com/tracks.json"
+#define TRACKS_URL @"https://api.soundcloud.com/me/favorites.json"
 
 // Params
-#define ORDER_KEY @"order"
 #define LIMIT_KEY @"limit"
 #define OFFSET_KEY @"offset"
 
@@ -41,36 +40,44 @@
     SCRequestResponseHandler handler;
     handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                             JSONObjectWithData:data
-                                             options:0
-                                             error:&jsonError];
-        
-        NSArray *tracks = nil;
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]])
+
+        if (error && failure)
         {
-            NSArray *jsonTracks = (NSArray *)jsonResponse;
-            DLog(@"tracks : %@",jsonTracks);
-            
-           tracks = [self parseTracks:jsonTracks];
-        }
-        
-        if ([tracks count] > 0 && success)
-        {
-            success(tracks);
-        }
-        else if (failure)
-        {
-            error = error != nil ? error : jsonError;
             failure(error);
+        }
+        else
+        {
+            
+            NSJSONSerialization *jsonResponse = [NSJSONSerialization
+                                                 JSONObjectWithData:data
+                                                 options:0
+                                                 error:&jsonError];
+            
+            NSArray *tracks = nil;
+            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]])
+            {
+                NSArray *jsonTracks = (NSArray *)jsonResponse;
+                
+                
+                tracks = [self parseTracks:jsonTracks];
+            }
+            
+            if ([tracks count] > 0 && success)
+            {
+                success(tracks);
+            }
+            else if (failure)
+            {
+                error = error != nil ? error : jsonError;
+                failure(error);
+            }
         }
     };
     
     
     NSString *resourceURL = TRACKS_URL;
     
-    NSDictionary *params = @{ // ORDER_KEY : @"hotness", --> take a long time to retrieve data
-                             LIMIT_KEY : [[NSNumber numberWithInteger:numberOfTracks] stringValue],
+    NSDictionary *params = @{LIMIT_KEY : [[NSNumber numberWithInteger:numberOfTracks] stringValue],
                              OFFSET_KEY : [[NSNumber numberWithInteger:numberAlreadyDownloaded] stringValue]};
     
     [SCRequest performMethod:SCRequestMethodGET

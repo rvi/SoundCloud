@@ -14,6 +14,8 @@
 
 #define REUSABLE_IDENTIFIER @"trackCell"
 
+/**************************************************************************************************/
+#pragma mark - Private
 
 @interface RVTrackCell ()
 

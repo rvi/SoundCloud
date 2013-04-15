@@ -14,4 +14,5 @@
             succeeded:( void (^) (UIImage *image))success
                failed:(void (^) (NSError *error))failure;
 
++ (void)removeCachedImages;
 @end

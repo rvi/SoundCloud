@@ -21,28 +21,50 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    NSCachedURLResponse *response = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    if (response && success)
+    {
+        UIImage *image = [UIImage imageWithData:response.data];
+        
+        success (image);
+    }
+    
+    else
+    {
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            UIImage *result = [UIImage imageWithData:responseObject];
+            
+            // set response in cache
+            NSCachedURLResponse *response = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:responseObject];
+            [[NSURLCache sharedURLCache] storeCachedResponse:response forRequest:request];
+            
+            if (success)
+            {
+                success(result);
+            }
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            if (failure)
+            {
+                failure(error);
+            }
+            
+        }];
+        
+        [operation start];
+    }
+}
 
-        UIImage *result = [UIImage imageWithData:responseObject];
-        
-        if (success)
-        {
-            success(result);
-        }
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
-        if (failure)
-        {
-            failure(error);
-        }
-        
-    }];
-    
-    [operation start];
++ (void)removeCachedImages
+{
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 @end

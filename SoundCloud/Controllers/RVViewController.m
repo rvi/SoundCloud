@@ -25,6 +25,7 @@
 #define SC_IOS_URI @"soundcloud://tracks:"
 
 #define NUMBER_OF_TRACKS_PER_CALL 20
+#define HEADER_HEIGHT 44
 
 @interface RVViewController ()
 
@@ -70,8 +71,7 @@
 {
     [super viewWillAppear:animated];
     
-    // TODO: remove all 44
-    CGFloat yTracksView = self.view.frame.size.height - 44;
+    CGFloat yTracksView = self.view.frame.size.height - HEADER_HEIGHT;
     [self.tracksView setFrame:CGRectMake(0,
                                          yTracksView,
                                          CGRectGetWidth(self.tracksView.frame),
@@ -126,7 +126,7 @@
         
     point.y = point.y < 0 ? 0 : point.y;
     
-    if (point.y < CGRectGetHeight(self.view.frame) - 44)
+    if (point.y < CGRectGetHeight(self.view.frame) - HEADER_HEIGHT)
     {
         CGRect trackViewFrame = self.tracksView.frame;
         trackViewFrame.origin.y = point.y;
@@ -136,7 +136,7 @@
 
 - (void)dragEndedGoingTop:(BOOL)isGoingTop
 {
-    CGFloat lastPosition = isGoingTop ? 0 : CGRectGetHeight(self.view.frame) - 44;
+    CGFloat lastPosition = isGoingTop ? 0 : CGRectGetHeight(self.view.frame) - HEADER_HEIGHT;
     [UIView animateWithDuration:0.3 animations:^{
         CGRect trackViewFrame = self.tracksView.frame;
         trackViewFrame.origin.y = lastPosition;
@@ -182,6 +182,8 @@
                      [self.tracks addObjectsFromArray:inTracks];
                      [self retrieveWaveforms];
                      
+                     // Update tableview
+                     
                      NSMutableArray *indexPaths = [NSMutableArray array];
                      
                      for (NSUInteger i = 0; i < [inTracks count]; i++)
@@ -195,7 +197,13 @@
                  } Failed:^(NSError *error) {
                      
                      [self.activityIndicator stopAnimating];
+                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                                         message:[error localizedDescription]
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
                      
+                     [alertView show];
                      DLog(@"fail to get tracks : %@",error);
                  }];    
 }
@@ -220,7 +228,7 @@
                         [self refreshUI];
                         
                     } failed:^(NSError *error) {
-                        DLog(@"fail to get waveform image : %@",error);
+                        DLog(@"fail to get picture for user : %@",error);
                     }];
 }
 
@@ -259,19 +267,27 @@
 {
     if ([SCSoundCloud account])
     {
-        // Logout
-        
-        self.tracks = [NSMutableArray array];
-        [self.tableView reloadData];
-        [SCSoundCloud removeAccess];
-        self.user = nil;
-        [self refreshUI];
+        [self logout];
     }
     else
     {
         [self login];
     }
 }
+
+/**************************************************************************************************/
+#pragma mark - Logout
+
+- (void)logout
+{
+    self.tracks = [NSMutableArray array];
+    [self.tableView reloadData];
+    [SCSoundCloud removeAccess];
+    [RVImageAPI removeCachedImages];
+    self.user = nil;
+    [self refreshUI];
+}
+
 /**************************************************************************************************/
 #pragma mark - UITableViewDatasource
 
@@ -310,6 +326,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    // On tap, open track in SoundCloud app or in Safari  not installed 
     
     if (indexPath.row < [self.tracks count])
     {

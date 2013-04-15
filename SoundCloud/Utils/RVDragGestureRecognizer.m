@@ -10,6 +10,8 @@
 
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
+#define HEADER_HEIGHT 44.
+
 @interface RVDragGestureRecognizer ()
 
 @property (nonatomic, assign) CGFloat lastY;
@@ -28,7 +30,7 @@
     CGPoint point = [touch locationInView:self.view];
     
     // touch is in header
-    if (point.y < 44)
+    if (point.y < HEADER_HEIGHT)
     {
         self.state = UIGestureRecognizerStateBegan;
     }
