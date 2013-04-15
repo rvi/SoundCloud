@@ -24,9 +24,11 @@
 
 #define SC_IOS_URI @"soundcloud://tracks:"
 
+#define NUMBER_OF_TRACKS_PER_CALL 20
+
 @interface RVViewController ()
 
-@property (nonatomic, strong) NSArray *tracks;
+@property (nonatomic, strong) NSMutableArray *tracks;
 @property (nonatomic, strong) RVUser *user;
 
 
@@ -48,6 +50,7 @@
 {
     [super viewDidLoad];
     
+    self.tracks = [NSMutableArray array];
     RVDragGestureRecognizer *dragGesture = [[RVDragGestureRecognizer alloc] init];
     dragGesture.dragDelegate = self;
     [self.tracksView addGestureRecognizer:dragGesture];
@@ -55,13 +58,29 @@
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
-
+    
     if (account)
     {
         [self retrieveTracks];
         [self retrieveInfosForUser];
-        
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // TODO: remove all 44
+    CGFloat yTracksView = self.view.frame.size.height - 44;
+    [self.tracksView setFrame:CGRectMake(0,
+                                         yTracksView,
+                                         CGRectGetWidth(self.tracksView.frame),
+                                         CGRectGetHeight(self.view.frame))];
+    
+    
+    [self.view addSubview:self.tracksView];
+    [self.view bringSubviewToFront:self.tracksView];
+    
 }
 
 -(void)refreshUI
@@ -132,35 +151,53 @@
 {
     for (RVTrack *track in self.tracks)
     {
-        [RVImageAPI getImageAtURL:track.waveFormURL
-                        succeeded:^(UIImage *image) {
-
-                            track.waveform = image;
-                            
-                        } failed:^(NSError *error) {
-                            DLog(@"fail to get waveform image : %@",error);
-                        }];
+        if (!track.waveform)
+        {
+            [RVImageAPI getImageAtURL:track.waveFormURL
+                            succeeded:^(UIImage *image) {
+                                
+                                track.waveform = image;
+                                
+                            } failed:^(NSError *error) {
+                                DLog(@"fail to get waveform image : %@",error);
+                            }];
+        }
     }
 }
 - (void)retrieveTracks
 {
-    [RVTracksAPI getTracksSucceeded:^(NSArray *inTracks) {
-        
-        // TODO: remove all 44
-        CGFloat yTracksView = self.view.frame.size.height - 44;
-        [self.tracksView setFrame:CGRectMake(0,
-                                             yTracksView,
-                                             CGRectGetWidth(self.tracksView.frame),
-                                             CGRectGetHeight(self.tracksView.frame))];
-        
-        [self.view addSubview:self.tracksView];
-        self.tracks = inTracks;
-        [self retrieveWaveforms];
-        [self.tableView reloadData];
-        
-    } Failed:^(NSError *error) {
-        DLog(@"fail to get tracks : %@",error);
-    }];
+    
+    NSUInteger offset = [self.tracks count];
+    
+    [self.activityIndicator startAnimating];
+    
+    [RVTracksAPI getTracks:NUMBER_OF_TRACKS_PER_CALL
+                    offset:offset
+                 Succeeded:^(NSArray *inTracks) {
+                     
+                     [self.activityIndicator stopAnimating];
+                     
+                     NSUInteger offset  = [self.tracks count];
+                     
+                     [self.tracks addObjectsFromArray:inTracks];
+                     [self retrieveWaveforms];
+                     
+                     NSMutableArray *indexPaths = [NSMutableArray array];
+                     
+                     for (NSUInteger i = 0; i < [inTracks count]; i++)
+                     {
+                         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i + offset inSection:0];
+                         [indexPaths addObject:indexPath];
+                     }
+                     
+                     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
+                     
+                 } Failed:^(NSError *error) {
+                     
+                     [self.activityIndicator stopAnimating];
+                     
+                     DLog(@"fail to get tracks : %@",error);
+                 }];    
 }
 
 - (void)retrieveInfosForUser
@@ -199,6 +236,7 @@
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
             NSLog(@"Login Done!");
+            [self retrieveTracks];
             [self retrieveInfosForUser];
         }
     };
@@ -221,6 +259,10 @@
 {
     if ([SCSoundCloud account])
     {
+        // Logout
+        
+        self.tracks = [NSMutableArray array];
+        [self.tableView reloadData];
         [SCSoundCloud removeAccess];
         self.user = nil;
         [self refreshUI];
@@ -272,7 +314,7 @@
     if (indexPath.row < [self.tracks count])
     {
         RVTrack *selectedTrack = [self.tracks objectAtIndex:indexPath.row];
-        NSString *url = [NSString stringWithFormat:@"%@%@",SC_IOS_URI,selectedTrack.trackId];
+        NSString *url = [NSString stringWithFormat:@"%@%@", SC_IOS_URI, selectedTrack.trackId];
         NSURL *trackURL = [NSURL URLWithString:url];
         
         if ([[UIApplication sharedApplication] canOpenURL:trackURL])
@@ -283,6 +325,23 @@
         {
             NSURL *permalinkURL = [NSURL URLWithString:selectedTrack.permalinkURL];
             [[UIApplication sharedApplication] openURL:permalinkURL];
+        }
+    }
+}
+
+/**************************************************************************************************/
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    CGFloat bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if (bottomEdge >= scrollView.contentSize.height) {
+        
+        // we are at the end, load more data only if we're not downloading (to avoid the same call severals time.)
+        
+        if (![self.activityIndicator isAnimating])
+        {
+            DLog(@"LOAD MORE DATA");
+            [self retrieveTracks];
         }
     }
 }

@@ -10,7 +10,9 @@
 
 @interface RVTracksAPI : NSObject
 
-+(void)getTracksSucceeded:(void (^)(NSArray *tracks))success
-                   Failed:(void (^)(NSError *error))failure;
++(void)getTracks:(NSUInteger)numberOfTracks
+          offset:(NSUInteger)numberAlreadyDownloaded
+       Succeeded:(void (^)(NSArray *tracks))success
+          Failed:(void (^)(NSError *error))failure;
 
 @end

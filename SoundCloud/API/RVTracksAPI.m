@@ -16,6 +16,11 @@
 
 #define TRACKS_URL @"https://api.soundcloud.com/tracks.json"
 
+// Params
+#define ORDER_KEY @"order"
+#define LIMIT_KEY @"limit"
+#define OFFSET_KEY @"offset"
+
 @interface RVTracksAPI ()
 
 + (NSArray *)parseTracks:(NSArray *)jsonTracks;
@@ -26,8 +31,10 @@
 
 
 
-+(void)getTracksSucceeded:(void (^)(NSArray *tracks))success
-                   Failed:(void (^)(NSError *error))failure
++(void)getTracks:(NSUInteger)numberOfTracks
+          offset:(NSUInteger)numberAlreadyDownloaded
+       Succeeded:(void (^)(NSArray *tracks))success
+          Failed:(void (^)(NSError *error))failure
 {
     SCAccount *account = [SCSoundCloud account];
     
@@ -59,10 +66,16 @@
         }
     };
     
+    
     NSString *resourceURL = TRACKS_URL;
+    
+    NSDictionary *params = @{ // ORDER_KEY : @"hotness", --> take a long time to retrieve data
+                             LIMIT_KEY : [[NSNumber numberWithInteger:numberOfTracks] stringValue],
+                             OFFSET_KEY : [[NSNumber numberWithInteger:numberAlreadyDownloaded] stringValue]};
+    
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
-             usingParameters:nil
+             usingParameters:params
                  withAccount:account
       sendingProgressHandler:nil
              responseHandler:handler];
