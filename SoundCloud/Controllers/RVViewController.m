@@ -22,6 +22,8 @@
 // View
 #import "RVTrackCell.h"
 
+#define SC_IOS_URI @"soundcloud://tracks:"
+
 @interface RVViewController ()
 
 @property (nonatomic, strong) NSArray *tracks;
@@ -266,6 +268,23 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row < [self.tracks count])
+    {
+        RVTrack *selectedTrack = [self.tracks objectAtIndex:indexPath.row];
+        NSString *url = [NSString stringWithFormat:@"%@%@",SC_IOS_URI,selectedTrack.trackId];
+        NSURL *trackURL = [NSURL URLWithString:url];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:trackURL])
+        {
+            [[UIApplication sharedApplication] openURL:trackURL];
+        }
+        else
+        {
+            NSURL *permalinkURL = [NSURL URLWithString:selectedTrack.permalinkURL];
+            [[UIApplication sharedApplication] openURL:permalinkURL];
+        }
+    }
 }
 
 @end

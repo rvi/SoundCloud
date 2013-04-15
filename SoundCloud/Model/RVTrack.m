@@ -28,7 +28,9 @@
         result.title = [dict getStringValue:TITLE_KEY];
         result.waveFormURL = [dict getStringValue:WAVEFORM_URL_KEY];
         result.pictureURL = [dict getStringValue:PICTURE_URL_KEY];
-
+        result.trackId = [[dict getDecimalNumberValue:TRACK_ID_KEY] stringValue];
+        result.permalinkURL = [dict getStringValue:PERMALINK_URL_KEY];
+        
         NSString *dateString = [dict getStringValue:DATE_KEY];
         result.date = [NSDate dateFromString:dateString];
         

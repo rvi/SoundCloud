@@ -22,7 +22,9 @@
     
     self.track = [NSDictionary dictionaryWithObjectsAndKeys:@"Stendhal Syndrom",TITLE_KEY,
                   @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg",WAVEFORM_URL_KEY,
-                   @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg?e48997d", PICTURE_URL_KEY, nil];
+                   @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg?e48997d", PICTURE_URL_KEY,
+                  @"123456", TRACK_ID_KEY,
+                  @"http://soundclound.com/track/123", PERMALINK_URL_KEY, nil];
 }
 
 -(void)tearDown
@@ -72,6 +74,8 @@
     STAssertEqualObjects(result.title, @"Stendhal Syndrom", nil);
     STAssertEqualObjects(result.waveFormURL, @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg", nil);
     STAssertEqualObjects(result.pictureURL, @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg?e48997d", nil);
+    STAssertEqualObjects(result.trackId, @"123456", nil);
+    STAssertEqualObjects(result.permalinkURL, @"http://soundclound.com/track/123", nil);
 }
 
 
