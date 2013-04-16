@@ -55,7 +55,7 @@
     RVDragGestureRecognizer *dragGesture = [[RVDragGestureRecognizer alloc] init];
     dragGesture.dragDelegate = self;
     [self.tracksView addGestureRecognizer:dragGesture];
-    
+
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
@@ -166,7 +166,6 @@
 }
 - (void)retrieveTracks
 {
-    
     NSUInteger offset = [self.tracks count];
     
     [self.activityIndicator startAnimating];

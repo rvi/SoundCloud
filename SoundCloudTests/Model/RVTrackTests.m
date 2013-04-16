@@ -23,7 +23,7 @@
     self.track = [NSDictionary dictionaryWithObjectsAndKeys:@"Stendhal Syndrom",TITLE_KEY,
                   @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg",WAVEFORM_URL_KEY,
                    @"https://i1.sndcdn.com/avatars-000029501578-hj5nyn-large.jpg?e48997d", PICTURE_URL_KEY,
-                  @"123456", TRACK_ID_KEY,
+                  [NSNumber numberWithInt:123456], TRACK_ID_KEY,
                   @"http://soundclound.com/track/123", PERMALINK_URL_KEY, nil];
 }
 
