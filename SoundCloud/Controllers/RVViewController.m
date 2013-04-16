@@ -241,10 +241,8 @@
     SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
         
         if (SC_CANCELED(error)) {
-            [self refreshUI];
             NSLog(@"Canceled!");
         } else if (error) {
-            [self refreshUI];
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
             NSLog(@"Login Done!");
