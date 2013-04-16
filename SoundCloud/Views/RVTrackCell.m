@@ -74,7 +74,7 @@
 - (void)updateUIWithTrack:(RVTrack *)track
 {
     self.track = track;
-    self.titleLabel.text = track.title;
+    self.titleLabel.text = [track.title uppercaseString];
     self.dateLabel.text = [track.date stringForDisplay];
     
     if (self.track.waveform)

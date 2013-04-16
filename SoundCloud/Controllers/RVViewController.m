@@ -22,10 +22,13 @@
 // View
 #import "RVTrackCell.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #define SC_IOS_URI @"soundcloud://tracks:"
 
 #define NUMBER_OF_TRACKS_PER_CALL 20
-#define HEADER_HEIGHT 44
+#define HEADER_HEIGHT 44.0
+#define CORNER_RADIUS 8.0
 
 @interface RVViewController ()
 
@@ -55,7 +58,7 @@
     RVDragGestureRecognizer *dragGesture = [[RVDragGestureRecognizer alloc] init];
     dragGesture.dragDelegate = self;
     [self.tracksView addGestureRecognizer:dragGesture];
-
+        
     SCAccount *account = [SCSoundCloud account];
     
     DLog(@"account %@", account);
@@ -94,7 +97,9 @@
     
     UIImageView *userPicture = [[UIImageView alloc] initWithFrame:self.userPictureImageView.frame];
     [userPicture setContentMode:UIViewContentModeScaleAspectFit];
-   
+    userPicture.layer.masksToBounds = YES;
+    userPicture.layer.cornerRadius = CORNER_RADIUS;
+
     if (self.user.picture)
     {
         userPicture.image = self.user.picture;
