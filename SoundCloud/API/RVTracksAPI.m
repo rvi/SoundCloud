@@ -68,8 +68,7 @@
             }
             else if (failure)
             {
-                error = error != nil ? error : jsonError;
-                failure(error);
+                failure(jsonError);
             }
         }
     };
